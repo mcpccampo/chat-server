@@ -8,12 +8,13 @@ const PORT = 3050;
 // Setup Server
 const app = express();
 app.use(express.json());
+app.use(express.static(__dirname + '/../public/build'));
 
 // Server Api Routes
-app.get('/api/message', msgCtr.read);
-app.post('/api/message', msgCtr.create);
-app.post('/api/message/:id', msgCtr.update);
-app.delete('/api/message/:id', msgCtr.delete);
+app.get('/api/messages', msgCtr.read);
+app.post('/api/messages', msgCtr.create);
+app.post('/api/messages/:id', msgCtr.update);
+app.delete('/api/messages/:id', msgCtr.delete);
 
 app.listen(PORT, () => {
   console.clear();
